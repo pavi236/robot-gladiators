@@ -28,7 +28,7 @@ var fight = function(enemy) {
       }
       
       // generate random damage value based on player's attack power
-      var damage = randomNumber(playerAttack - 3, playerAttack);
+      var damage = randomNumber(playerInfo.attack - 3, playerInfo.attack);
       
       enemy.health = Math.max(0, enemy.health - damage);
       console.log(
@@ -166,11 +166,24 @@ var shop = function() {
 
 /* END GAME FUNCTION */
 
-/* GAME INFORMATION / VARIABLES */
 
+// function to set name
+var getPlayerName = function() {
+  var name = "";
+
+  while (name === "" || name === null) {
+    name = prompt("What is your robot's name?");
+  }
+  
+  console.log("Your robot's name is " + name);
+  return name;
+
+};
+
+/* GAME INFORMATION / VARIABLES */
 // player information
 var playerInfo = {
-  name: window.prompt("What is your robot's name?"),
+  name: getPlayerName(),
   health: 100,
   attack: 10,
   money: 10,
